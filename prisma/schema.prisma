@@ -10,39 +10,71 @@ datasource db {
 
 model Product {
   id Int @id @default(autoincrement()) 
+  // 대표 이미지
   thumbnailMain String
+  // 추가 이미지
   thumbnailSub String
+  // 판매상태
   // saleState SaleState @default(STOP)
+  // 카테고리
   // category Category @default(RETANGULAR)
+  // 상품명
   name String
+  // 판매가
   cost Int
+  // 할인 금액 or 퍼센트
   discount Int
+  // 할인 시작 날짜
   discountStartDate DateTime?
+  // 할인 종료 날짜
   discountEndDate DateTime?
+  // 부가세
   // vat VATType @default(TAX)
+  // 재고수량
   amount Int
+  // 옵션명
   optionName String?
+  // 옵션값
   optionValues String?
+  // 첫번째 옵션, 두번째 옵션 ....
   optionList Option[]
+  // 상세 설명
   description String?
+  // 모델명
   modelName String
-  brandType String?
+  // 브랜드
   brandName String
+  // KC 인증
   isKC Boolean
+  // 인증정보
   kcInfo String
+  // 원산지
   origin String
+  // 제조일자
   madeStartDate DateTime?
+  // 유효일자
   validEndDate DateTime?
+  // 미성년자 구매
   isTeenager Boolean
+  // 상품 정보 제공 고시
   isShowDetail Boolean
+  // 반품/교환 택배사
   courier String
+  // 반품 배송비(편도)
   refundDeliveryFee Int
+  // 교환 배송비(왕복)
   changeDeliveryFee Int
+  // 반품/교환 주소지
   address String
+  // 반품/교환 상세주소
   addressDetail String
+  // 반품 교환지 대표 연락처
   tel String
+  // 반품/교환 신청 기준일
   referenceDate String
+  // 반품/교환 불가능 사유
   cancelReason String
+  // AS 및 특이사항
   remark String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt  @default(now())
@@ -51,11 +83,13 @@ model Product {
 }
 
 model Option {
-  id Int @id @default(autoincrement()) 
+  id Int @id @default(autoincrement())
+  // 추가금액
   addCost Int
+  // 재고
   amount Int
-  author Product? @relation(fields: [authorId], references: [id])
-  authorId Int?
+  product Product? @relation(fields: [productId], references: [id])
+  productId Int?
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt  @default(now())
   deletedAt DateTime?
