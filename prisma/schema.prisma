@@ -1,0 +1,81 @@
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+model Product {
+  id Int @id @default(autoincrement()) 
+  thumbnailMain String
+  thumbnailSub String
+  // saleState SaleState @default(STOP)
+  // category Category @default(RETANGULAR)
+  name String
+  cost Int
+  discount Int
+  discountStartDate DateTime?
+  discountEndDate DateTime?
+  // vat VATType @default(TAX)
+  amount Int
+  optionName String?
+  optionValues String?
+  optionList Option[]
+  description String?
+  modelName String
+  brandType String?
+  brandName String
+  isKC Boolean
+  kcInfo String
+  origin String
+  madeStartDate DateTime?
+  validEndDate DateTime?
+  isTeenager Boolean
+  isShowDetail Boolean
+  courier String
+  refundDeliveryFee Int
+  changeDeliveryFee Int
+  address String
+  addressDetail String
+  tel String
+  referenceDate String
+  cancelReason String
+  remark String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  @default(now())
+  deletedAt DateTime?
+
+}
+
+model Option {
+  id Int @id @default(autoincrement()) 
+  addCost Int
+  amount Int
+  product Product @relation(fields: [productId], references: [id])
+  productId Int
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  @default(now())
+  deletedAt DateTime?
+
+}
+
+// enum SaleState {
+//   STOP
+//   START
+// }
+
+// enum Category {
+//   RETANGULAR
+//   CATEYE
+//   CIRCULAR
+// }
+
+// enum VATType {
+//   TAX
+//   TAXFREE
+//   TAXRATE
+// }
+
