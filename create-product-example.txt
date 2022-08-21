@@ -11,7 +11,6 @@
      "optionValues" : "옵션값",
      "description" : "상세 설명",
      "modelName" : "모델 이름",
-     "brandType" : "브랜드 유형",
      "brandName" : "브랜드 이름",
      "isKC" : true,
      "kcInfo" : "KC인증",
