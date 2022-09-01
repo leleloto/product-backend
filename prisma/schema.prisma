@@ -82,6 +82,8 @@ model Product {
 
 }
 
+
+
 model Option {
   id Int @id @default(autoincrement())
   // 추가금액
@@ -96,6 +98,18 @@ model Option {
 
 }
 
+
+model Company{
+  id Int @id @default(autoincrement())
+  name String
+  tel String
+  owner String
+  companyNumber String
+  address String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt  @default(now())
+  deletedAt DateTime?
+}
 // enum SaleState {
 //   STOP
 //   START
